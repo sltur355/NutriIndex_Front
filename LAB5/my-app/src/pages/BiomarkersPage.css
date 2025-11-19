@@ -1,0 +1,103 @@
+.biomarkers-container {
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Inter', Arial, sans-serif;
+  min-height: calc(100vh - 70px);
+}
+
+/* Форма поиска */
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 40px 0 0;
+  padding: 0;
+  background: none;
+}
+
+.basket-icon {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  text-decoration: none;
+}
+
+.search-input {
+  width: 1000px;
+  height: 40px;
+  padding: 0 16px;
+  border: 2px solid #0097B3;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: 300;
+  outline: none;
+  font-family: 'Inter', Arial, sans-serif;
+  background-clip: padding-box;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+.search-input::placeholder {
+  color: #D7D6D6;
+  font-size: 22px;
+  font-weight: 300;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.biomarkers-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 300;
+  font-family: 'Inter', Arial, sans-serif;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  color: #666;
+}
+
+/* Сетка карточек - ФИКСИРОВАННАЯ ширина */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 330px);
+  gap: 40px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  width: fit-content;
+}
+
+.card-col {
+  width: 330px;
+  display: flex;
+  justify-content: center;
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}

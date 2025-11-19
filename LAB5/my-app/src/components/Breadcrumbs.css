@@ -1,0 +1,44 @@
+.breadcrumbs {
+    list-style: none; /* Убираем маркеры списка */
+    display: flex; /* ГЛАВНОЕ: выстраиваем все li в ряд */
+    align-items: center; /* Центрируем по вертикали */
+    flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+    gap: 8px; /* Создаем красивый отступ между всеми элементами */
+    padding: 20px;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  /* Убираем лишние стили для отдельных li, так как flex и gap все делают за нас */
+  .breadcrumbs li {
+    white-space: nowrap; /* Текст внутри li не переносится */
+  }
+  
+  /* Стили для ссылок */
+  .breadcrumbs a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .breadcrumbs a:hover {
+    color: #0097B3;
+    text-decoration: underline;
+  }
+  
+  /* Стили для последней, неактивной крошки */
+  .breadcrumbs li:last-child {
+    color: #000;
+    font-weight: 600;
+  }
+  
+  /* Слэш-разделитель */
+  .slash {
+    color: #D7D6D6;
+    /* Убираем отступы, так как теперь есть gap */
+    padding: 0; 
+    /* Важно, чтобы слэш не считался последним элементом для стилей выше */
+    margin-right: -4px;
+    margin-left: -4px;
+  }

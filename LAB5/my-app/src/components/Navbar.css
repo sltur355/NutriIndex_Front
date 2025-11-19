@@ -1,0 +1,43 @@
+.custom-navbar {
+    height: 70px;
+    border-bottom: 1px solid #D7D6D6 !important;
+    background-color: #ffffff !important;
+  }
+  
+  .navbar-brand-custom {
+    text-decoration: none !important;
+    color: #0097B3 !important;
+    font-weight: 700 !important;
+    font-size: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .navbar-brand-custom:hover {
+    color: #0097B3 !important;
+    text-decoration: none !important;
+  }
+  
+  .nav-link-custom {
+    color: #405258 !important;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 8px 20px !important;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .nav-link-custom.active {
+    color: #0097B3 !important;
+    font-weight: 600;
+  }
+  
+  .nav-link-custom:hover {
+    color: #0097B3 !important;
+  }
+  
+  /* Убираем отступы у контейнера */
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
