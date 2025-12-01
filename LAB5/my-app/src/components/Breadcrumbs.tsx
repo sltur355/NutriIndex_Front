@@ -1,46 +1,43 @@
-import React, { type FC } from 'react'
+import { type FC } from 'react'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../Routes'
 import './Breadcrumbs.css'
 
-// Интерфейс для одной "крошки"
 interface ICrumb {
   label: string
   path?: string
 }
 
-// Пропсы компонента
-interface BreadcrumbsProps {
+interface Props {
   crumbs: ICrumb[]
 }
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = (props) => {
-  const { crumbs } = props
-
+const Breadcrumbs: FC<Props> = ({ crumbs }) => {
   return (
-    <ul className="breadcrumbs">
-      {/* Главная страница всегда первая */}
-      <li>
-        <Link to={ROUTES.HOME}>Главная</Link>
-      </li>
-      
-      {/* Остальные крошки */}
-      {!!crumbs.length &&
-        crumbs.map((crumb, index) => (
-          <React.Fragment key={index}>
-            <li className="slash">/</li>
-            {index === crumbs.length - 1 ? (
-              // Последняя крошка - не активна (текущая страница)
-              <li>{crumb.label}</li>
-            ) : (
-              // Промежуточные крошки - активные ссылки
-              <li>
-                <Link to={crumb.path || ''}>{crumb.label}</Link>
-              </li>
-            )}
-          </React.Fragment>
-        ))}
-    </ul>
+    <div className="breadcrumbs-wrapper">
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
+        <ol className="breadcrumbs__list">
+          <li className="breadcrumbs__item">
+            <Link to={ROUTES.HOME} className="breadcrumbs__link">
+              Главная
+            </Link>
+          </li>
+
+          {crumbs.map((crumb, index) => (
+            <li key={index} className="breadcrumbs__item">
+              <span className="breadcrumbs__separator">/</span>
+              {crumb.path && index < crumbs.length - 1 ? (
+                <Link to={crumb.path} className="breadcrumbs__link">
+                  {crumb.label}
+                </Link>
+              ) : (
+                <span className="breadcrumbs__current">{crumb.label}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
   )
 }
 

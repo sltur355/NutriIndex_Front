@@ -1,13 +1,15 @@
-import { type FC, useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+// my-app/src/pages/BiomarkersPage.tsx
+import { useState, useEffect } from 'react'
+import { Container, Spinner } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import BiomarkerCard from '../components/BiomarkerCard'
 import Breadcrumbs from '../components/Breadcrumbs'
+import SearchForm from '../components/SearchForm'
 import { getBiomarkers, type BiomarkerResource } from '../modules/biomarkersApi'
 import { ROUTE_LABELS } from '../Routes'
 import './BiomarkersPage.css'
 
-const BiomarkersPage: FC = () => {
+const BiomarkersPage = () => {
   const [searchValue, setSearchValue] = useState('')
   const [loading, setLoading] = useState(false)
   const [biomarkers, setBiomarkers] = useState<BiomarkerResource[]>([])
@@ -18,24 +20,23 @@ const BiomarkersPage: FC = () => {
     loadBiomarkers()
   }, [])
 
-  const loadBiomarkers = (query: string = '') => {
+  const loadBiomarkers = async (query: string = '') => {
     setLoading(true)
     setError('')
-    getBiomarkers(query)
-      .then((response) => {
-        setBiomarkers(response.biomarkers)
-        setLoading(false)
-      })
-      .catch((err) => {
-        setError('Не удалось загрузить биомаркеры: ' + err.message)
-        console.error('Error loading biomarkers:', err)
-        setLoading(false)
-      })
+    try {
+      const response = await getBiomarkers(query)
+      setBiomarkers(response.biomarkers)
+    } catch (err) {
+      setError('Не удалось загрузить биомаркеры')
+      console.error('Error loading biomarkers:', err)
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    loadBiomarkers(searchValue)
+  const handleSearch = (query: string) => {
+    setSearchValue(query)
+    loadBiomarkers(query)
   }
 
   const handleCardClick = (id: number) => {
@@ -43,66 +44,53 @@ const BiomarkersPage: FC = () => {
   }
 
   return (
-    <Container fluid className="biomarkers-container">
+    <div className="biomarkers-page">
+      {/* Поиск и корзина */}
+      <SearchForm onSearch={handleSearch} isLoading={loading} />
+
+      {/* Breadcrumbs под поиском */}
       <Breadcrumbs crumbs={[{ label: ROUTE_LABELS.BIOMARKERS }]} />
-      
-      {/* Форма поиска как в шаблоне */}
-      <Form className="search-form" onSubmit={handleSearch}>
-        {/* Иконка корзины (заглушка) */}
-        <div className="basket-icon disabled">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 40C8.97 40 0 31.03 0 20C0 8.97 8.97 0 20 0C31.03 0 40 8.97 40 20C40 31.03 31.03 40 20 40ZM20 2C10.08 2 2 10.07 2 20C2 29.93 10.08 38 20 38C29.92 38 38 29.93 38 20C38 10.07 29.92 2 20 2ZM12.7 15H11V13H14L15.33 16H27V21.5L17.1 24.33C17.4591 24.5667 17.7324 24.9128 17.8793 25.3171C18.0261 25.7214 18.0388 26.1622 17.9153 26.5742C17.7918 26.9862 17.5387 27.3474 17.1937 27.6043C16.8487 27.8611 16.4301 27.9999 16 28C15.705 27.9985 15.4139 27.9318 15.1477 27.8045C14.8815 27.6773 14.6467 27.4927 14.4602 27.2641C14.2737 27.0354 14.1402 26.7684 14.0691 26.482C13.998 26.1957 13.9911 25.8971 14.049 25.6078C14.1068 25.3185 14.228 25.0455 14.4038 24.8086C14.5796 24.5716 14.8056 24.3764 15.0657 24.2371C15.3258 24.0978 15.6134 24.0177 15.9081 24.0026C16.2027 23.9876 16.4971 24.0379 16.77 24.15L12.7 15ZM16.22 18L18 22L25 20V18H16.22ZM24 28C23.4696 28 22.9609 27.7893 22.5858 27.4142C22.2107 27.0391 22 26.5304 22 26C22 25.4696 22.2107 24.9609 22.5858 24.5858C22.9609 24.2107 23.4696 24 24 24C24.5304 24 25.0391 24.2107 25.4142 24.5858C25.7893 24.9609 26 25.4696 26 26C26 26.5304 25.7893 27.0391 25.4142 27.4142C25.0391 27.7893 24.5304 28 24 28Z" fill="#D7D6D6"/>
-          </svg>
-        </div>
 
-        <Form.Control
-          type="text"
-          placeholder="Введите биохимический показатель..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          className="search-input"
-        />
-        
-        <Button type="submit" variant="link" className="search-button">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28.8 28.8L36.8 36.8L28.8 28.8Z" fill="#0097B3"/>
-            <path d="M28.8 28.8L36.8 36.8" stroke="#0097B3" stroke-width="1.5"/>
-            <path d="M18.4 32C25.9111 32 32 25.9111 32 18.4C32 10.8889 25.9111 4.79999 18.4 4.79999C10.8889 4.79999 4.79999 10.8889 4.79999 18.4C4.79999 25.9111 10.8889 32 18.4 32Z" stroke="#0097B3" stroke-width="1.5"/>
-          </svg>
-        </Button>
-      </Form>
-
+      {/* Заголовок */}
       <h2 className="biomarkers-title">
         Биохимические показатели для оценки питания
       </h2>
 
-      {loading && (
-        <div className="text-center">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Загрузка...</span>
+      {/* Контент */}
+      <Container fluid className="biomarkers-section">
+        {loading && (
+          <div className="biomarkers-loader">
+            <Spinner animation="border" variant="primary" />
+            <p>Загрузка биомаркеров...</p>
           </div>
-        </div>
-      )}
+        )}
 
-      {!loading && biomarkers.length === 0 ? (
-        <div className="no-results">
-          <h3>К сожалению, пока ничего не найдено :(</h3>
-        </div>
-      ) : (
-        <div className="cards-container">
-          <div className="cards">
-            {biomarkers.map((biomarker, index) => (
-              <div key={index} className="card-col">
-                <BiomarkerCard 
+        {!loading && error && (
+          <div className="biomarkers-error">
+            <p>{error}</p>
+          </div>
+        )}
+
+        {!loading && biomarkers.length === 0 && !error && (
+          <div className="biomarkers-empty">
+            <p>К сожалению, биомаркеры не найдены 😔</p>
+          </div>
+        )}
+
+        {!loading && biomarkers.length > 0 && (
+          <div className="biomarkers-grid">
+            {biomarkers.map((biomarker) => (
+              <div key={biomarker.id}>
+                <BiomarkerCard
                   biomarker={biomarker}
-                  imageClickHandler={() => handleCardClick(biomarker.id)}
+                  onClick={handleCardClick}
                 />
               </div>
             ))}
           </div>
-        </div>
-      )}
-    </Container>
+        )}
+      </Container>
+    </div>
   )
 }
 

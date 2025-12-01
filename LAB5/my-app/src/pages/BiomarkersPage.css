@@ -1,62 +1,13 @@
-.biomarkers-container {
-  padding: 0;
-  background-color: #ffffff;
-  font-family: 'Inter', Arial, sans-serif;
+.biomarkers-page {
   min-height: calc(100vh - 70px);
+  background-color: #ffffff;
+  padding-bottom: 40px;
+  /* Отступ сверху: Header(70px) + SearchForm(80px) + немного воздуха */
+  margin-top: 150px;
 }
 
-/* Форма поиска */
-.search-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 40px 0 0;
+.biomarkers-section {
   padding: 0;
-  background: none;
-}
-
-.basket-icon {
-  display: inline-flex;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  margin-right: 6px;
-  text-decoration: none;
-}
-
-.search-input {
-  width: 1000px;
-  height: 40px;
-  padding: 0 16px;
-  border: 2px solid #0097B3;
-  border-radius: 15px;
-  font-size: 22px;
-  font-weight: 300;
-  outline: none;
-  font-family: 'Inter', Arial, sans-serif;
-  background-clip: padding-box;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-}
-
-.search-input::placeholder {
-  color: #D7D6D6;
-  font-size: 22px;
-  font-weight: 300;
-  font-family: 'Inter', Arial, sans-serif;
-}
-
-.search-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .biomarkers-title {
@@ -65,39 +16,111 @@
   align-items: center;
   font-size: 30px;
   font-weight: 300;
-  font-family: 'Inter', Arial, sans-serif;
-  margin-top: 70px;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+  margin-top: 0;
   margin-bottom: 70px;
-  color: #666;
+  color: #333;
 }
 
-/* Сетка карточек - ФИКСИРОВАННАЯ ширина */
-.cards-container {
+.biomarkers-loader,
+.biomarkers-error,
+.biomarkers-empty {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 0 20px;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 300px;
 }
 
-.cards {
+.biomarkers-loader {
+  color: #0097B3;
+}
+
+.biomarkers-error {
+  background-color: #FEE;
+  color: #C33;
+  border-radius: 8px;
+  margin: 40px;
+}
+
+.biomarkers-empty {
+  color: #999;
+}
+
+.biomarkers-empty p,
+.biomarkers-error p,
+.biomarkers-loader p {
+  font-size: 18px;
+  color: #666;
+  margin-top: 16px;
+}
+
+.biomarkers-grid {
   display: grid;
   grid-template-columns: repeat(3, 330px);
   gap: 40px;
   justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  margin-bottom: 70px;
   width: fit-content;
 }
 
-.card-col {
-  width: 330px;
-  display: flex;
-  justify-content: center;
+@media (max-width: 1024px) {
+  .biomarkers-grid {
+    grid-template-columns: repeat(2, 330px);
+    gap: 30px;
+  }
+
+  .biomarkers-title {
+    font-size: 28px;
+    margin-bottom: 50px;
+  }
+
+  .biomarkers-page {
+    margin-top: 130px;
+  }
 }
 
-.no-results {
-  text-align: center;
-  padding: 3rem;
-  color: #666;
+@media (max-width: 768px) {
+  .biomarkers-page {
+    margin-top: 120px;
+  }
+
+  .biomarkers-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+  }
+
+  .biomarkers-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .biomarkers-section {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .biomarkers-page {
+    margin-top: 100px;
+  }
+
+  .biomarkers-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .biomarkers-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
 }

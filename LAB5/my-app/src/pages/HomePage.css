@@ -1,44 +1,312 @@
+/* HomePage.css */
+
+.home-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-top: 70px;
+}
+
+/* КАРУСЕЛЬ - НА ВСЮ ШИРИНУ */
+.home-carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* Трек слайдов */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* Каждый слайд */
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Кнопки навигации */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 151, 179, 0.8);
+  color: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 123, 159, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-button--prev {
+  left: 20px;
+}
+
+.carousel-button--next {
+  right: 20px;
+}
+
+/* Индикаторы - полупрозрачные на фоне */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.carousel-indicator.active {
+  background-color: rgba(255, 255, 255, 1);
+  width: 14px;
+  height: 14px;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
 .home-container {
-    padding: 2rem;
-    background-color: #ffffff;
-    font-family: 'Inter', Arial, sans-serif;
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.home-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home-title {
+  color: #0097B3;
+  font-weight: 700;
+  font-size: 48px;
+  margin-bottom: 40px;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+}
+
+.home-description {
+  margin-bottom: 40px;
+}
+
+.description-text {
+  font-size: 18px;
+  color: #405258;
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+}
+
+.home-buttons {
+  margin-top: 40px;
+}
+
+.home-buttons a {
+  text-decoration: none;
+}
+
+.btn-primary-custom {
+  background-color: #0097B3;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary-custom:hover {
+  background-color: #007B8F;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 151, 179, 0.3);
+}
+
+.btn-primary-custom:active {
+  transform: translateY(0);
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .home-carousel {
+    height: 400px;
   }
-  
-  .home-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+
+  .carousel-button {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
   }
-  
+
+  .carousel-button--prev {
+    left: 16px;
+  }
+
+  .carousel-button--next {
+    right: 16px;
+  }
+
+  .home-container {
+    padding: 60px 16px;
+  }
+
   .home-title {
-    color: #0097B3;
-    font-weight: 700;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 40px;
+    margin-bottom: 30px;
   }
-  
-  .home-description {
-    margin-bottom: 3rem;
-  }
-  
+
   .description-text {
-    font-size: 1.2rem;
-    color: #405258;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .btn-primary-custom {
+    padding: 12px 40px;
+    font-size: 16px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .home-carousel {
+    height: 300px;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .carousel-button--prev {
+    left: 12px;
+  }
+
+  .carousel-button--next {
+    right: 12px;
+  }
+
+  .carousel-indicators {
+    bottom: 16px;
+    gap: 8px;
+  }
+
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .carousel-indicator.active {
+    width: 12px;
+    height: 12px;
+  }
+
+  .home-container {
+    padding: 40px 12px;
+  }
+
+  .home-title {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  .description-text {
+    font-size: 15px;
     line-height: 1.6;
   }
-  
+
   .btn-primary-custom {
-    background-color: #0097B3;
-    border-color: #0097B3;
-    border-radius: 25px;
-    padding: 12px 40px;
-    font-size: 1.2rem;
-    font-weight: 600;
+    padding: 12px 32px;
+    font-size: 15px;
   }
-  
-  .btn-primary-custom:hover {
-    background-color: #007B8F;
-    border-color: #007B8F;
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+  .home-carousel {
+    height: 220px;
   }
+
+  .carousel-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .carousel-button--prev {
+    left: 8px;
+  }
+
+  .carousel-button--next {
+    right: 8px;
+  }
+
+  .home-container {
+    padding: 32px 12px;
+  }
+
+  .home-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .description-text {
+    font-size: 14px;
+  }
+
+  .btn-primary-custom {
+    padding: 10px 28px;
+    font-size: 14px;
+  }
+}

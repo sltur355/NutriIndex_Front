@@ -1,34 +1,38 @@
-// my-app/src/components/BiomarkerCard.tsx
-
 import { type FC } from 'react'
-// УБЕДИТЕСЬ, ЧТО ЭТА СТРОКА ЕСТЬ И ПУТЬ ВЕРНЫЙ
-import './BiomarkerCard.css' 
-import { Link } from 'react-router-dom'
+import './BiomarkerCard.css'
 import { type BiomarkerResource } from '../modules/biomarkersApi'
 import { defaultImage } from '../constants/defaultImage'
 
 interface Props {
   biomarker: BiomarkerResource
-  imageClickHandler?: () => void
+  onClick?: (id: number) => void
 }
 
-const BiomarkerCard: FC<Props> = ({ biomarker, imageClickHandler }) => {
+const BiomarkerCard: FC<Props> = ({ biomarker, onClick }) => {
+  const handleCardClick = () => {
+    onClick?.(biomarker.id)
+  }
+
   return (
-    // Этот div теперь будет стилизован из BiomarkerCard.css
-    <div className="card"> 
-      <Link to={`/biomarkers/${biomarker.id}`} className="card-link">
-        <div className="card-image">
-          <img 
-            src={biomarker.image_url || defaultImage} // Используем картинку с бэка или дефолтную
-            alt={biomarker.name}
-            onClick={imageClickHandler}
-          />
-        </div>
-        <div className="card-body">
-          <h3 className="card-title">{biomarker.name}</h3>
-          <p className="card-description">{biomarker.description}</p>
-        </div>
-      </Link>
+    <div className="biomarker-card">
+      <div className="biomarker-card__image">
+        <img
+          src={biomarker.image_url || defaultImage}
+          alt={biomarker.name}
+          onError={(e) => {
+            e.currentTarget.src = defaultImage
+          }}
+        />
+      </div>
+
+      <div className="biomarker-card__body">
+        <h3 className="biomarker-card__title">{biomarker.name}</h3>
+        <p className="biomarker-card__description">{biomarker.description}</p>
+      </div>
+
+      <button className="biomarker-card__button" onClick={handleCardClick}>
+        Подробнее
+      </button>
     </div>
   )
 }

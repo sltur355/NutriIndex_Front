@@ -1,74 +1,146 @@
-/* my-app/src/components/BiomarkerCard.css */
-
-/* Убираем стандартное оформление ссылки */
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Заставляем ссылку занимать всю высоту карточки */
-}
-
-/* Основной контейнер карточки */
-.card {
+.biomarker-card {
   width: 330px;
-  min-height: 400px; /* Используем min-height вместо height для гибкости */
+  height: 452px;
   background: #F5F5F5;
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: relative;
   border-radius: 10px;
   box-shadow: 0 0 0 1px #D7D6D6;
-  overflow: hidden; /* Скрываем все, что выходит за пределы скругленных углов */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.biomarker-card:hover {
+  transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Контейнер для изображения */
-.card-image {
-  width: 100%;
+/* Контейнер для изображения - верхняя часть карточки */
+.biomarker-card__image {
+  width: 330px;
   height: 245px;
-  overflow: hidden; /* Обязательно, чтобы изображение при увеличении не вылезало */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  background-color: #EEEEEE;
 }
 
-.card-image img {
+.biomarker-card__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cover лучше чем fill, чтобы не искажать пропорции */
-  transition: transform 0.3s ease;
+  object-fit: cover;
+  transition: transform 0.2s ease;
 }
 
-/* Эффект увеличения изображения при наведении на всю карточку */
-.card:hover .card-image img {
+/* При наведении на карточку - увеличиваем только изображение */
+.biomarker-card:hover .biomarker-card__image img {
   transform: scale(1.1);
 }
 
-/* Тело карточки с текстом */
-.card-body {
-  padding: 10px 16px 20px 16px;
-  text-align: center;
-  flex-grow: 1; /* Позволяет этому блоку занять все оставшееся место */
+/* Тело карточки - текстовая часть */
+.biomarker-card__body {
+  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
 }
 
-.card-title {
+.biomarker-card__title {
   margin: 0;
   font-size: 30px;
   font-weight: 600;
   color: #08C3DC;
-  margin-top: 10px;
+  line-height: 1.2;
+  text-align: center;
 }
 
-.card-description {
+.biomarker-card__description {
   margin-top: 10px;
+  margin-bottom: 0;
   font-size: 15px;
   font-weight: 300;
   color: #405258;
-  text-align: left; /* Описание выравниваем по левому краю */
-  flex-grow: 1; /* Занимает оставшееся место, прижимая кнопку вниз (если бы она была) */
+  text-align: left;
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* Кнопка "Подробнее" - внизу карточки */
+.biomarker-card__button {
+  width: calc(100% - 32px); /* 330px - 16px отступов с каждой стороны */
+  height: 40px;
+  margin: 0 16px 16px 16px;
+  background-color: transparent;
+  border: 2px solid #F36B2B;
+  border-radius: 20px;
+  color: #F36B2B;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.biomarker-card__button:hover {
+  background-color: #F36B2B;
+  color: #ffffff;
+}
+
+.biomarker-card__button:active {
+  transform: scale(0.98);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .biomarker-card {
+    width: 280px;
+    height: 400px;
+  }
+
+  .biomarker-card__image {
+    width: 280px;
+    height: 210px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .biomarker-card__title {
+    font-size: 24px;
+  }
+
+  .biomarker-card__description {
+    font-size: 14px;
+  }
+
+  .biomarker-card__button {
+    width: calc(100% - 24px);
+    margin: 0 12px 12px 12px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .biomarker-card {
+    width: 100%;
+    max-width: 330px;
+    height: auto;
+  }
+
+  .biomarker-card__image {
+    width: 100%;
+  }
 }

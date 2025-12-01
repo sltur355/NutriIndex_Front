@@ -1,0 +1,45 @@
+.custom-header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E5E5E5;
+    height: 70px;
+    padding: 0 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-text {
+    color: #2E7D8C;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  
+  .nav-link-custom {
+    color: #595959 !important;
+    font-size: 16px;
+    margin: 0 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+  }
+  
+  .nav-link-custom:hover {
+    color: #2E7D8C !important;
+  }
+  
+  .nav-link-custom.active {
+    color: #2E7D8C !important;
+    border-bottom-color: #2E7D8C;
+  }
+  

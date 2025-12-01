@@ -1,35 +1,118 @@
-import { type FC } from 'react'
-import { Container, Button } from 'react-bootstrap'
+// my-app/src/pages/HomePage.tsx
+import { useState } from 'react'
+import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { ROUTES } from '../Routes'
 import './HomePage.css'
 
-const HomePage: FC = () => {
+const HomePage = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // Правильные пути - относительно public/
+  const carouselImages = [
+    '/carousel1.jpg',
+    '/carousel2.jpg',
+    '/carousel3.jpg',
+    '/carousel4.jpg',
+  ]
+
+  const handlePrevious = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? carouselImages.length - 1 : prev - 1
+    )
+  }
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) =>
+      prev === carouselImages.length - 1 ? 0 : prev + 1
+    )
+  }
+
   return (
-    <Container className="home-container">
-      {/* УБИРАЕМ Breadcrumbs с главной страницы */}
-      
-      <div className="home-content">
-        <h1 className="home-title">NutriScan</h1>
-        <div className="home-description">
-          <p className="description-text">
-            Система для оценки нутритивного статуса по индексу нутритивной недостаточности (INI)
-          </p>
-          <p className="description-text">
-            Современный инструмент для анализа биохимических показателей и оценки 
-            нутритивного статуса пациентов. Используйте наш сервис для точной диагностики 
-            и мониторинга состояния питания.
-          </p>
+    <div className="home-page">
+      {/* Карусель - на всю ширину экрана */}
+      <section className="home-carousel">
+        <div className="carousel-track">
+          {carouselImages.map((image, index) => (
+            <div
+              key={index}
+              className={`carousel-slide ${
+                index === currentImageIndex ? 'active' : ''
+              }`}
+              style={{
+                transform: `translateX(calc(-${currentImageIndex} * 100%))`,
+              }}
+            >
+              <img
+                src={image}
+                alt={`Слайд ${index + 1}`}
+                onError={(e) => {
+                  e.currentTarget.src = '/DefaultImage.svg'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Кнопки навигации */}
+        <button
+          className="carousel-button carousel-button--prev"
+          onClick={handlePrevious}
+          aria-label="Предыдущее изображение"
+        >
+          ‹
+        </button>
+
+        <button
+          className="carousel-button carousel-button--next"
+          onClick={handleNext}
+          aria-label="Следующее изображение"
+        >
+          ›
+        </button>
+
+        {/* Индикаторы слайдов - на фоне картинок полупрозрачные */}
+        <div className="carousel-indicators">
+          {carouselImages.map((_, index) => (
+            <button
+              key={index}
+              className={`carousel-indicator ${
+                index === currentImageIndex ? 'active' : ''
+              }`}
+              onClick={() => setCurrentImageIndex(index)}
+              aria-label={`Слайд ${index + 1}`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Основной контент */}
+      <Container className="home-container">
+        <div className="home-content">
+          <h1 className="home-title">NutriScan</h1>
+
+          <div className="home-description">
+            <p className="description-text">
+              Система для оценки нутритивного статуса по индексу нутритивной
+              недостаточности (INI)
+            </p>
+            <p className="description-text">
+              Современный инструмент для анализа биохимических показателей и
+              оценки нутритивного статуса пациентов. Используйте наш сервис для
+              точной диагностики и мониторинга состояния питания.
+            </p>
+          </div>
+
           <div className="home-buttons">
             <Link to={ROUTES.BIOMARKERS}>
-              <Button className="btn-primary-custom">
+              <button className="btn-primary-custom">
                 Начать работу с биомаркерами
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
 

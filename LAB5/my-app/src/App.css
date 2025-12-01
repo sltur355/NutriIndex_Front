@@ -1,3 +1,32 @@
+/* App.css */
+
+:root {
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+}
+
 .App {
-    padding-top: 70px; /* Высота navbar */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 70px; /* Высота Header */
+  background-color: #ffffff;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 60px;
   }
+}
