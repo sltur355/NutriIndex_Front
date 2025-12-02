@@ -1,10 +1,9 @@
-/* BiomarkerDetailPage.css */
-
 .biomarker-detail {
   min-height: 100vh;
   background-color: #ffffff;
-  padding-top: 70px; /* Под хедер */
+  padding-top: 70px;
 }
+
 
 .biomarker-detail__main {
   width: 975px;
@@ -14,6 +13,7 @@
   align-items: center;
   justify-content: center;
 }
+
 
 .biomarker-detail__card {
   background-color: #E5F4F6;
@@ -30,6 +30,7 @@
   box-sizing: border-box;
 }
 
+
 .biomarker-detail__image {
   width: 338px;
   height: 286px;
@@ -37,6 +38,7 @@
   border-radius: 8px;
   flex-shrink: 0;
 }
+
 
 .biomarker-detail__content {
   flex: 1;
@@ -48,6 +50,7 @@
   height: 100%;
 }
 
+
 .biomarker-detail__title {
   color: #08C3DC;
   margin-top: 0;
@@ -56,6 +59,7 @@
   font-weight: 600;
   font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
 }
+
 
 .biomarker-detail__item {
   margin-bottom: 20px;
@@ -66,6 +70,7 @@
   line-height: 1.6;
 }
 
+
 .biomarker-detail__item strong {
   color: #F36B2B;
   font-weight: 600;
@@ -73,9 +78,11 @@
   margin-right: 5px;
 }
 
+
 .biomarker-detail__item span {
   color: #333;
 }
+
 
 .biomarker-detail__loader,
 .biomarker-detail__error {
@@ -88,10 +95,12 @@
   text-align: center;
 }
 
+
 .biomarker-detail__error h2 {
   color: #C33;
   margin-bottom: 20px;
 }
+
 
 .biomarker-detail__back-button {
   margin-top: 40px;
@@ -107,31 +116,42 @@
   transition: all 0.3s ease;
 }
 
+
 .biomarker-detail__back-button:hover {
   background-color: #007A94;
   transform: translateY(-2px);
 }
 
-/* Адаптивность для планшетов */
-@media (max-width: 1024px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* DESKTOP (1200px+) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* (базовые стили выше подходят) */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* LAPTOP (1024px - 1199px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1200px) {
   .biomarker-detail__main {
     width: 95%;
-    margin: 40px auto;
+    margin: 36px auto;
   }
 
   .biomarker-detail__card {
     flex-direction: column;
-    border-radius: 50px;
-    padding: 20px;
+    border-radius: 60px;
+    padding: 28px;
     height: auto;
-    min-height: 500px;
+    min-height: 520px;
+    gap: 24px;
   }
 
   .biomarker-detail__image {
     width: 100%;
-    max-width: 338px;
+    max-width: 320px;
     height: auto;
-    max-height: 286px;
+    max-height: 270px;
   }
 
   .biomarker-detail__content {
@@ -140,31 +160,56 @@
     height: auto;
   }
 
-  .biomarker-detail__item {
-    text-align: center;
+  .biomarker-detail__title {
+    font-size: 28px;
+    margin-bottom: 26px;
   }
 
-  .biomarker-detail__item strong {
-    display: block;
-    margin-bottom: 5px;
+  .biomarker-detail__item {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+
+  .biomarker-detail__back-button {
+    margin-top: 36px;
+    padding: 11px 22px;
+    font-size: 15px;
   }
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* TABLET (768px - 1023px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1024px) {
   .biomarker-detail {
     padding-top: 70px;
   }
 
   .biomarker-detail__main {
     width: 90%;
-    margin: 24px auto;
+    margin: 32px auto;
   }
 
   .biomarker-detail__card {
-    border-radius: 30px;
-    padding: 16px;
-    min-height: 400px;
+    flex-direction: column;
+    border-radius: 50px;
+    padding: 20px;
+    min-height: 440px;
+    gap: 18px;
+  }
+
+  .biomarker-detail__image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    max-height: 240px;
+  }
+
+  .biomarker-detail__content {
+    padding-right: 0;
+    text-align: center;
+    height: auto;
   }
 
   .biomarker-detail__title {
@@ -175,31 +220,146 @@
   .biomarker-detail__item {
     font-size: 14px;
     margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .biomarker-detail__item strong {
+    display: block;
+    margin-bottom: 4px;
+    margin-right: 0;
+  }
+
+  .biomarker-detail__back-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 
-@media (max-width: 480px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE (576px - 767px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  .biomarker-detail {
+    padding-top: 70px;
+  }
+
   .biomarker-detail__main {
     width: 100%;
     padding: 0 12px;
+    margin: 24px 0;
   }
 
   .biomarker-detail__card {
-    border-radius: 20px;
-    padding: 12px;
-    gap: 16px;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 16px;
+    min-height: 380px;
+    gap: 14px;
   }
 
   .biomarker-detail__image {
-    max-width: 280px;
-    max-height: 240px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 220px;
+  }
+
+  .biomarker-detail__content {
+    padding-right: 0;
+    text-align: center;
+    height: auto;
   }
 
   .biomarker-detail__title {
     font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .biomarker-detail__item {
     font-size: 13px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .biomarker-detail__item strong {
+    display: block;
+    margin-bottom: 3px;
+    margin-right: 0;
+  }
+
+  .biomarker-detail__back-button {
+    margin-top: 24px;
+    padding: 9px 18px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .biomarker-detail__loader,
+  .biomarker-detail__error {
+    padding: 40px 16px;
+    min-height: calc(100vh - 70px);
+  }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE SMALL (375px - 575px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 576px) {
+  .biomarker-detail {
+    padding-top: 70px;
+  }
+
+  .biomarker-detail__main {
+    width: 100%;
+    padding: 0 10px;
+    margin: 16px 0;
+  }
+
+  .biomarker-detail__card {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 12px;
+    min-height: 360px;
+    gap: 12px;
+  }
+
+  .biomarker-detail__image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+
+  .biomarker-detail__title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .biomarker-detail__item {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .biomarker-detail__item strong {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .biomarker-detail__back-button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .biomarker-detail__loader,
+  .biomarker-detail__error {
+    padding: 30px 12px;
+  }
+
+  .biomarker-detail__error h2 {
+    font-size: 16px;
   }
 }

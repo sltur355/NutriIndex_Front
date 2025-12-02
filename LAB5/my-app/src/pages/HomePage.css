@@ -1,12 +1,14 @@
-/* HomePage.css */
-
 .home-page {
   min-height: 100vh;
   background-color: #ffffff;
   padding-top: 70px;
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* КАРУСЕЛЬ - НА ВСЮ ШИРИНУ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .home-carousel {
   position: relative;
   width: 100%;
@@ -15,7 +17,7 @@
   overflow: hidden;
 }
 
-/* Трек слайдов */
+
 .carousel-track {
   position: relative;
   width: 100%;
@@ -23,7 +25,7 @@
   display: flex;
 }
 
-/* Каждый слайд */
+
 .carousel-slide {
   position: absolute;
   width: 100%;
@@ -36,11 +38,13 @@
   justify-content: center;
 }
 
+
 .carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 
 /* Кнопки навигации */
 .carousel-button {
@@ -62,22 +66,27 @@
   justify-content: center;
 }
 
+
 .carousel-button:hover {
   background-color: rgba(0, 123, 159, 1);
   transform: translateY(-50%) scale(1.1);
 }
 
+
 .carousel-button:active {
   transform: translateY(-50%) scale(0.95);
 }
+
 
 .carousel-button--prev {
   left: 20px;
 }
 
+
 .carousel-button--next {
   right: 20px;
 }
+
 
 /* Индикаторы - полупрозрачные на фоне */
 .carousel-indicators {
@@ -91,6 +100,7 @@
   z-index: 10;
 }
 
+
 .carousel-indicator {
   width: 12px;
   height: 12px;
@@ -101,10 +111,12 @@
   transition: all 0.3s ease;
 }
 
+
 .carousel-indicator:hover {
   background-color: rgba(255, 255, 255, 0.7);
   transform: scale(1.2);
 }
+
 
 .carousel-indicator.active {
   background-color: rgba(255, 255, 255, 1);
@@ -112,17 +124,23 @@
   height: 14px;
 }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 /* ОСНОВНОЙ КОНТЕНТ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 .home-container {
   padding: 80px 20px;
   background-color: #ffffff;
 }
+
 
 .home-content {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
 }
+
 
 .home-title {
   color: #0097B3;
@@ -132,9 +150,11 @@
   font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
 }
 
+
 .home-description {
   margin-bottom: 40px;
 }
+
 
 .description-text {
   font-size: 18px;
@@ -145,13 +165,16 @@
   font-family: 'Graphik LCG', 'Inter', Arial, sans-serif;
 }
 
+
 .home-buttons {
   margin-top: 40px;
 }
 
+
 .home-buttons a {
   text-decoration: none;
 }
+
 
 .btn-primary-custom {
   background-color: #0097B3;
@@ -167,74 +190,88 @@
   display: inline-block;
 }
 
+
 .btn-primary-custom:hover {
   background-color: #007B8F;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 151, 179, 0.3);
 }
 
+
 .btn-primary-custom:active {
   transform: translateY(0);
 }
 
-/* Адаптивность для планшетов */
-@media (max-width: 1024px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* DESKTOP (1200px+) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* (базовые стили выше уже подходят) */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* LAPTOP (1024px - 1199px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1200px) {
   .home-carousel {
-    height: 400px;
+    height: 420px;
   }
 
   .carousel-button {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     font-size: 24px;
   }
 
   .carousel-button--prev {
-    left: 16px;
+    left: 18px;
   }
 
   .carousel-button--next {
-    right: 16px;
+    right: 18px;
   }
 
   .home-container {
-    padding: 60px 16px;
+    padding: 70px 20px;
   }
 
   .home-title {
-    font-size: 40px;
-    margin-bottom: 30px;
+    font-size: 44px;
+    margin-bottom: 35px;
   }
 
   .description-text {
-    font-size: 16px;
-    margin-bottom: 16px;
+    font-size: 17px;
+    margin-bottom: 18px;
   }
 
   .btn-primary-custom {
-    padding: 12px 40px;
-    font-size: 16px;
+    padding: 13px 44px;
+    font-size: 17px;
   }
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* TABLET (768px - 1023px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1024px) {
   .home-carousel {
-    height: 300px;
+    height: 360px;
   }
 
   .carousel-button {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
   }
 
   .carousel-button--prev {
-    left: 12px;
+    left: 14px;
   }
 
   .carousel-button--next {
-    right: 12px;
+    right: 14px;
   }
 
   .carousel-indicators {
@@ -253,34 +290,97 @@
   }
 
   .home-container {
-    padding: 40px 12px;
+    padding: 60px 16px;
   }
 
   .home-title {
-    font-size: 32px;
-    margin-bottom: 24px;
+    font-size: 36px;
+    margin-bottom: 30px;
   }
 
   .description-text {
-    font-size: 15px;
+    font-size: 16px;
+    margin-bottom: 16px;
     line-height: 1.6;
   }
 
   .btn-primary-custom {
-    padding: 12px 32px;
-    font-size: 15px;
+    padding: 12px 40px;
+    font-size: 16px;
   }
 }
 
-/* Очень маленькие экраны */
-@media (max-width: 480px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE (576px - 767px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  .home-carousel {
+    height: 280px;
+  }
+
+  .carousel-button {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .carousel-button--prev {
+    left: 10px;
+  }
+
+  .carousel-button--next {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    bottom: 12px;
+    gap: 6px;
+  }
+
+  .carousel-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-indicator.active {
+    width: 10px;
+    height: 10px;
+  }
+
+  .home-container {
+    padding: 40px 16px;
+  }
+
+  .home-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .description-text {
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .btn-primary-custom {
+    padding: 11px 32px;
+    font-size: 14px;
+  }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE SMALL (375px - 575px) */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 576px) {
   .home-carousel {
     height: 220px;
   }
 
   .carousel-button {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     font-size: 18px;
   }
 
@@ -292,21 +392,38 @@
     right: 8px;
   }
 
+  .carousel-indicators {
+    bottom: 10px;
+    gap: 5px;
+  }
+
+  .carousel-indicator {
+    width: 7px;
+    height: 7px;
+  }
+
+  .carousel-indicator.active {
+    width: 9px;
+    height: 9px;
+  }
+
   .home-container {
-    padding: 32px 12px;
+    padding: 30px 12px;
   }
 
   .home-title {
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 20px;
   }
 
   .description-text {
-    font-size: 14px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    line-height: 1.4;
   }
 
   .btn-primary-custom {
     padding: 10px 28px;
-    font-size: 14px;
+    font-size: 13px;
   }
 }

@@ -1,23 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
+import Navbar from './components/Navbar'
 import HomePage from './pages/HomePage'
 import BiomarkersPage from './pages/BiomarkersPage'
 import BiomarkerDetailPage from './pages/BiomarkerDetailPage'
 import './App.css'
 
 function App() {
-  return (
-    <Router> 
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/biomarkers" element={<BiomarkersPage />} />
-          <Route path="/biomarkers/:id" element={<BiomarkerDetailPage />} />
-        </Routes>
-      </div>
-    </Router>
-  )
+return (
+<Router basename={import.meta.env.BASE_URL}>
+<div className="App">
+<Navbar />
+<Routes>
+<Route path="/" element={<HomePage />} />
+<Route path="/biomarkers" element={<BiomarkersPage />} />
+<Route path="/biomarkers/:id" element={<BiomarkerDetailPage />} />
+</Routes>
+</div>
+</Router>
+)
 }
 
 export default App

@@ -6,9 +6,11 @@
   margin-top: 150px;
 }
 
+
 .biomarkers-section {
   padding: 0;
 }
+
 
 .biomarkers-title {
   display: flex;
@@ -22,6 +24,7 @@
   color: #333;
 }
 
+
 .biomarkers-loader,
 .biomarkers-error,
 .biomarkers-empty {
@@ -34,9 +37,11 @@
   min-height: 300px;
 }
 
+
 .biomarkers-loader {
   color: #0097B3;
 }
+
 
 .biomarkers-error {
   background-color: #FEE;
@@ -45,9 +50,11 @@
   margin: 40px;
 }
 
+
 .biomarkers-empty {
   color: #999;
 }
+
 
 .biomarkers-empty p,
 .biomarkers-error p,
@@ -56,6 +63,11 @@
   color: #666;
   margin-top: 16px;
 }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* GRID - АДАПТИВНЫЕ КОЛОНКИ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .biomarkers-grid {
   display: grid;
@@ -69,10 +81,25 @@
   width: fit-content;
 }
 
-@media (max-width: 1024px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* DESKTOP (1200px и выше) - 4 КОЛОНКИ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (min-width: 1440px) {
   .biomarkers-grid {
-    grid-template-columns: repeat(2, 330px);
-    gap: 30px;
+    grid-template-columns: repeat(4, 330px);
+    gap: 40px;
+  }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* LAPTOP (1024px - 1439px) - 3 КОЛОНКИ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1200px) {
+  .biomarkers-grid {
+    grid-template-columns: repeat(3, 330px);
+    gap: 40px;
   }
 
   .biomarkers-title {
@@ -85,23 +112,26 @@
   }
 }
 
-@media (max-width: 768px) {
-  .biomarkers-page {
-    margin-top: 120px;
-  }
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* TABLET (768px - 1023px) - 2 КОЛОНКИ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1024px) {
   .biomarkers-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    max-width: 330px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
+    max-width: 700px;
+    padding: 0 16px;
   }
 
   .biomarkers-title {
-    font-size: 24px;
+    font-size: 26px;
     margin-bottom: 40px;
+  }
+
+  .biomarkers-page {
+    margin-top: 120px;
+    padding-bottom: 30px;
   }
 
   .biomarkers-section {
@@ -109,18 +139,66 @@
   }
 }
 
-@media (max-width: 480px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE (576px - 767px) - 1 КОЛОНКА */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  .biomarkers-page {
+    margin-top: 110px;
+  }
+
+  .biomarkers-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 16px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .biomarkers-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+    padding: 0 16px;
+  }
+
+  .biomarkers-section {
+    padding: 0;
+  }
+
+  .biomarkers-loader,
+  .biomarkers-error,
+  .biomarkers-empty {
+    padding: 60px 16px;
+    min-height: 250px;
+  }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE SMALL (375px - 575px) - 1 КОЛОНКА */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 576px) {
   .biomarkers-page {
     margin-top: 100px;
+    padding-bottom: 20px;
   }
 
   .biomarkers-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    padding: 0 12px;
   }
 
   .biomarkers-title {
-    font-size: 20px;
-    margin-bottom: 30px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 0 12px;
+  }
+
+  .biomarkers-section {
+    padding: 0;
   }
 }

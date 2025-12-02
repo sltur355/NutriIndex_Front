@@ -12,10 +12,12 @@
   transition: all 0.3s ease;
 }
 
+
 .biomarker-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Контейнер для изображения - верхняя часть карточки */
 .biomarker-card__image {
@@ -29,6 +31,7 @@
   background-color: #EEEEEE;
 }
 
+
 .biomarker-card__image img {
   width: 100%;
   height: 100%;
@@ -36,10 +39,12 @@
   transition: transform 0.2s ease;
 }
 
+
 /* При наведении на карточку - увеличиваем только изображение */
 .biomarker-card:hover .biomarker-card__image img {
   transform: scale(1.1);
 }
+
 
 /* Тело карточки - текстовая часть */
 .biomarker-card__body {
@@ -54,6 +59,7 @@
   box-sizing: border-box;
 }
 
+
 .biomarker-card__title {
   margin: 0;
   font-size: 30px;
@@ -62,6 +68,7 @@
   line-height: 1.2;
   text-align: center;
 }
+
 
 .biomarker-card__description {
   margin-top: 10px;
@@ -73,6 +80,7 @@
   line-height: 1.4;
   flex: 1;
 }
+
 
 /* Кнопка "Подробнее" - внизу карточки */
 .biomarker-card__button {
@@ -95,52 +103,140 @@
   box-sizing: border-box;
 }
 
+
 .biomarker-card__button:hover {
   background-color: #F36B2B;
   color: #ffffff;
 }
 
+
 .biomarker-card__button:active {
   transform: scale(0.98);
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* DESKTOP (1024px) - 330px WIDTH */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* (базовые стили выше уже для desktop) */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* TABLET (768px - 1023px) - 100% WIDTH, ADAPTIVE HEIGHT */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1024px) {
   .biomarker-card {
-    width: 280px;
-    height: 400px;
+    width: 100%;
+    height: auto;
+    min-height: 380px;
   }
 
   .biomarker-card__image {
-    width: 280px;
-    height: 210px;
-    border-radius: 8px 8px 0 0;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
   }
 
   .biomarker-card__title {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .biomarker-card__description {
     font-size: 14px;
+    margin-top: 8px;
   }
 
   .biomarker-card__button {
+    height: 38px;
+    font-size: 15px;
     width: calc(100% - 24px);
     margin: 0 12px 12px 12px;
-    height: 36px;
-    font-size: 14px;
   }
 }
 
-@media (max-width: 480px) {
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE (576px - 767px) - 100% WIDTH */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
   .biomarker-card {
     width: 100%;
-    max-width: 330px;
     height: auto;
+    min-height: 360px;
+    border-radius: 8px;
   }
 
   .biomarker-card__image {
     width: 100%;
+    height: 180px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .biomarker-card__body {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .biomarker-card__title {
+    font-size: 22px;
+  }
+
+  .biomarker-card__description {
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .biomarker-card__button {
+    height: 36px;
+    font-size: 14px;
+    margin: 0 12px 12px 12px;
+    width: calc(100% - 24px);
+    border-radius: 18px;
+  }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE SMALL (< 576px) - 100% WIDTH */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 576px) {
+  .biomarker-card {
+    width: 100%;
+    height: auto;
+    min-height: 340px;
+    border-radius: 8px;
+  }
+
+  .biomarker-card__image {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .biomarker-card__body {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .biomarker-card__title {
+    font-size: 18px;
+  }
+
+  .biomarker-card__description {
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+
+  .biomarker-card__button {
+    height: 34px;
+    font-size: 13px;
+    margin: 0 10px 10px 10px;
+    width: calc(100% - 20px);
+    border-width: 1.5px;
   }
 }

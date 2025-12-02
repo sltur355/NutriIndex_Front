@@ -1,19 +1,24 @@
-import { type FC, useState } from 'react'
+import { type FC, useState, useEffect } from 'react'
 import './SearchForm.css'
 
 interface Props {
   onSearch: (query: string) => void
   isLoading?: boolean
   placeholder?: string
+  initialValue?: string 
 }
 
 const SearchForm: FC<Props> = ({
   onSearch,
   isLoading = false,
   placeholder = 'Введите биохимический показатель...',
+  initialValue = '',
 }) => {
-  const [searchValue, setSearchValue] = useState('')
-
+  const [searchValue, setSearchValue] = useState(initialValue)
+  useEffect(() => {
+    setSearchValue(initialValue)
+  }, [initialValue])
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     onSearch(searchValue)

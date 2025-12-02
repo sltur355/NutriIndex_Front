@@ -7,13 +7,13 @@ import './HomePage.css'
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
+  const baseUrl = import.meta.env.BASE_URL
   // Правильные пути - относительно public/
   const carouselImages = [
-    '/carousel1.jpg',
-    '/carousel2.jpg',
-    '/carousel3.jpg',
-    '/carousel4.jpg',
+    `${baseUrl}carousel1.jpg`,
+    `${baseUrl}carousel2.jpg`,
+    `${baseUrl}carousel3.jpg`,
+    `${baseUrl}carousel4.jpg`,
   ]
 
   const handlePrevious = () => {
